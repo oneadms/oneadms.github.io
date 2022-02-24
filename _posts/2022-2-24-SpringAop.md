@@ -41,7 +41,7 @@ tag:
 </beans>
 ```
 
-### 3.创建自己的MyAspect文件（配置注入点）
+### 3.注解方式—（配置注入点） 创建自己的MyAspect文件
 
 ```java
 package com.oneamd.test;
@@ -73,6 +73,17 @@ public class MyAspect {
     return object;
   }
 }
+```
+
+### 4.XML文件方式配置
+
+```xml
+<aop:config>
+  <aop:aspect ref="myAspect">
+    <aop:around method="around" pointcut="execution(* com.oneamd.test.*.*(..))" />
+  </aop:aspect>
+</aop:config>
+<bean class="com.oneamd.test.MyAspect" id="myAspect"/>
 ```
 
 ### 4.测试是否注入成功
